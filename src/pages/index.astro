@@ -1,10 +1,18 @@
 ---
 import { Image } from '@astrojs/image/components'
 import emmanuelAndWife from '../assets/images/emmanuel-and-wife.jpg'
+import Icon from '../components/Icon.astro'
 import Link from '../components/Link.astro'
 import SiteLayout from '../layouts/SiteLayout.astro'
 
-const tools = ['React', 'Flutter', 'SwiftUI', 'AWS', 'Firebase', 'Figma']
+const tools = [
+  'React',
+  'Flutter',
+  'SwiftUI',
+  'AWS',
+  'Firebase',
+  'Figma',
+] as const
 ---
 
 <SiteLayout>
@@ -61,11 +69,11 @@ const tools = ['React', 'Flutter', 'SwiftUI', 'AWS', 'Firebase', 'Figma']
 
       <aside>
         <h2 class="sr-only">Tools I enjoy using</h2>
-        <ul class="flex flex-wrap gap-4 mt-12 justify-center">
+        <ul class="flex flex-wrap gap-3 mt-12 justify-center">
           {
             tools.map((tool) => (
-              <li class="rounded-full bg-gray-50 px-6 py-1 font-medium">
-                {tool}
+              <li class="flex items-center gap-x-2 rounded-full bg-gray-50 px-6 py-1 font-medium text-gray-800">
+                <Icon name={tool} /> {tool}
               </li>
             ))
           }

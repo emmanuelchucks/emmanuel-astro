@@ -1,3 +1,12 @@
+---
+import Icon from '../components/Icon.astro'
+const socials = [
+  ['GitHub', 'https://github.com/emmanuelchucks'],
+  ['Twitter', 'https://twitter.com/emmanuelchucks'],
+  ['LinkedIn', 'https://linkedin.com/in/emmanuelchucks'],
+] as const
+---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,10 +30,16 @@
     <footer class="text-center py-8 px-4 bg-gray-50 space-y-8">
       <section>
         <h2 class="sr-only">Connect with me</h2>
-        <ul class="inline-flex flex-wrap gap-x-6 mt-1 font-medium">
-          <li>GitHub</li>
-          <li>Twitter</li>
-          <li>YouTube</li>
+        <ul class="inline-flex flex-wrap gap-x-7 mt-1 font-medium">
+          {
+            socials.map(([social, url]) => (
+              <li>
+                <a href={url} class="flex items-center gap-x-2">
+                  <Icon name={social} /> {social}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </section>
 
