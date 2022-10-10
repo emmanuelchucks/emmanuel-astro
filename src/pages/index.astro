@@ -1,4 +1,5 @@
 ---
+import { Image } from '@astrojs/image/components'
 import emmanuelAndWife from '../assets/images/emmanuel-and-wife.jpg'
 import SiteLayout from '../layouts/SiteLayout.astro'
 
@@ -49,9 +50,11 @@ const tools = ['React', 'Flutter', 'SwiftUI', 'AWS', 'Firebase', 'Figma']
         </p>
       </div>
 
-      <img
+      <Image
         src={emmanuelAndWife}
         alt="Emmanuel and his wife in native Ghanaian attire"
+        width={800}
+        format="webp"
         class="shadow-xl"
       />
 
