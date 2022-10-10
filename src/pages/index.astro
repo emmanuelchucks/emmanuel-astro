@@ -1,6 +1,7 @@
 ---
 import { Image } from '@astrojs/image/components'
 import emmanuelAndWife from '../assets/images/emmanuel-and-wife.jpg'
+import Link from '../components/Link.astro'
 import SiteLayout from '../layouts/SiteLayout.astro'
 
 const tools = ['React', 'Flutter', 'SwiftUI', 'AWS', 'Firebase', 'Figma']
@@ -26,27 +27,27 @@ const tools = ['React', 'Flutter', 'SwiftUI', 'AWS', 'Firebase', 'Figma']
 
       <div class="space-y-4 my-6">
         <p>
-          A passionate developer living in the crazy city of <a
-            href="https://en.wikipedia.org/wiki/Accra"
-            class="underline underline-offset-4">Accra, Ghana</a
+          A passionate developer living in the crazy city of <Link
+            url="https://en.wikipedia.org/wiki/Accra"
+          >
+            Accra, Ghana</Link
           >.
         </p>
         <p>
-          I enjoy building things that solve problems and spark joy. I'm
-          currently working on a social platform to help connect event planners
-          and celebrants.
+          I enjoy building things that solve problems and spark joy. Currently
+          working on a social platform to help connect event planners and
+          celebrants.
         </p>
         <p>
-          Sometimes I play the piano to help me relax and meditate. I love
-          reading about design and development to stay up to date with the
-          latest technologies.
+          Sometimes I play the piano to help me relax and meditate. I love to
+          read and stay up to date with the latest technologies.
         </p>
         <p>
-          I am available for contract and remote work. Email <a
-            href={'mailto:me@emmanuelchucks.com?subject=' +
+          Available for contract and remote work. Just email <Link
+            url={'mailto:me@emmanuelchucks.com?subject=' +
               encodeURIComponent("I'd like to work with you")}
-            class="underline underline-offset-4">me@emmanuelchucks.com</a
-          >
+            >me@emmanuelchucks.com</Link
+          >.
         </p>
       </div>
 
@@ -75,10 +76,9 @@ const tools = ['React', 'Flutter', 'SwiftUI', 'AWS', 'Firebase', 'Figma']
     <section>
       <h2 class="text-3xl font-bold">Projects</h2>
       <p class="mt-1">
-        Here are some of my professional work. If you want to see more of my
-        hobby projects, <a href="https://github.com/emmanuelchucks"
-          >see my GitHub</a
-        >
+        Some of my professional work. For my hobby projects, <Link
+          url="https://github.com/emmanuelchucks">see my GitHub</Link
+        >.
       </p>
     </section>
 
