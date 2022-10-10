@@ -1,6 +1,8 @@
 ---
 import emmanuelAndWife from '../assets/images/emmanuel-and-wife.jpg'
 import SiteLayout from '../layouts/SiteLayout.astro'
+
+const tools = ['React', 'Flutter', 'SwiftUI', 'AWS', 'Firebase', 'Figma']
 ---
 
 <SiteLayout>
@@ -14,13 +16,18 @@ import SiteLayout from '../layouts/SiteLayout.astro'
 
   <main class="px-4 space-y-16 mb-16">
     <article class="mt-8">
-      <h1>Hello, I'm Emmanuel Chucks</h1>
-      <p class="my-4">Full-Stack Engineer & UI/UX Designer</p>
+      <h1 class="uppercase font-bold text-gray-600">
+        Hello, I'm Emmanuel Chucks
+      </h1>
+      <p class="my-4 text-4xl font-bold">
+        Full-Stack Engineer & UI/UX Designer
+      </p>
 
-      <div class="space-y-4">
+      <div class="space-y-4 my-6">
         <p>
           A passionate developer living in the crazy city of <a
-            href="https://en.wikipedia.org/wiki/Accra">Accra, Ghana</a
+            href="https://en.wikipedia.org/wiki/Accra"
+            class="underline underline-offset-4">Accra, Ghana</a
           >.
         </p>
         <p>
@@ -35,7 +42,9 @@ import SiteLayout from '../layouts/SiteLayout.astro'
         </p>
         <p>
           I am available for contract and remote work. Email <a
-            href="mailto:me@emmanuelchucks.com">me@emmanuelchucks.com</a
+            href={'mailto:me@emmanuelchucks.com?subject=' +
+              encodeURIComponent("I'd like to work with you")}
+            class="underline underline-offset-4">me@emmanuelchucks.com</a
           >
         </p>
       </div>
@@ -43,25 +52,26 @@ import SiteLayout from '../layouts/SiteLayout.astro'
       <img
         src={emmanuelAndWife}
         alt="Emmanuel and his wife in native Ghanaian attire"
-        class="my-4"
+        class="shadow-xl"
       />
 
       <aside>
-        <h2>Tools I enjoy using</h2>
-        <ul class="inline-flex flex-wrap gap-x-4 mt-4">
-          <li>React</li>
-          <li>Flutter</li>
-          <li>SwiftUI</li>
-          <li>AWS</li>
-          <li>Firebase</li>
-          <li>Figma</li>
+        <h2 class="sr-only">Tools I enjoy using</h2>
+        <ul class="flex flex-wrap gap-4 mt-12 justify-center">
+          {
+            tools.map((tool) => (
+              <li class="rounded-full bg-gray-50 px-6 py-1 font-medium">
+                {tool}
+              </li>
+            ))
+          }
         </ul>
       </aside>
     </article>
 
     <section>
-      <h2>Projects</h2>
-      <p>
+      <h2 class="text-3xl font-bold">Projects</h2>
+      <p class="mt-1">
         Here are some of my professional work. If you want to see more of my
         hobby projects, <a href="https://github.com/emmanuelchucks"
           >see my GitHub</a
@@ -70,8 +80,10 @@ import SiteLayout from '../layouts/SiteLayout.astro'
     </section>
 
     <section>
-      <h2>Recent posts</h2>
-      <p>Code, design, and other things I've been thinking about lately.</p>
+      <h2 class="text-3xl font-bold">Recent posts</h2>
+      <p class="mt-1">
+        Code, design, and other things I've been thinking about lately.
+      </p>
     </section>
   </main>
 </SiteLayout>

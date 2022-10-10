@@ -6,8 +6,8 @@
     <slot name="site:head" />
   </head>
   <body>
-    <header class="flex items-baseline gap-x-2 p-4">
-      <p>e.</p>
+    <header class="flex items-baseline gap-x-2 p-4 text-xl">
+      <p class="px-4 py-2 bg-black text-white font-semibold text-3xl">e.</p>
       <span>/</span>
       <nav>
         <ul>
@@ -18,18 +18,20 @@
 
     <slot />
 
-    <footer class="text-center py-16 px-4">
+    <footer class="text-center py-8 px-4 bg-gray-50 space-y-8">
       <section>
-        <h2>Connect with me</h2>
-        <ul class="inline-flex flex-wrap gap-x-8 mt-2 mb-8">
+        <h2 class="sr-only">Connect with me</h2>
+        <ul class="inline-flex flex-wrap gap-x-6 mt-1 font-medium">
           <li>GitHub</li>
           <li>Twitter</li>
           <li>YouTube</li>
         </ul>
       </section>
 
-      <p>Made in Accra, Ghana 🇬🇭</p>
-      <small>&copy; 2022. MIT Licence</small>
+      <div class="text-sm">
+        <p>Made in Accra, Ghana 🇬🇭</p>
+        <small>&copy; 2022. MIT Licence</small>
+      </div>
     </footer>
   </body>
 </html>
