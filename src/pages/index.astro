@@ -1,4 +1,5 @@
 ---
+import emmanuelAndWife from '../assets/images/emmanuel-and-wife.jpg'
 import SiteLayout from '../layouts/SiteLayout.astro'
 ---
 
@@ -11,44 +12,52 @@ import SiteLayout from '../layouts/SiteLayout.astro'
     />
   </Fragment>
 
-  <main>
-    <article>
+  <main class="px-4 space-y-16 mb-16">
+    <article class="mt-8">
       <h1>Hello, I'm Emmanuel Chucks</h1>
-      <p>Full-Stack Engineer & UI/UX Designer</p>
-      <p>
-        A passionate developer living in the crazy city of <a
-          href="https://en.wikipedia.org/wiki/Accra">Accra, Ghana</a
-        >.
-      </p>
-      <p>
-        I enjoy building things that solve problems and spark joy. I'm currently
-        working on a social platform to help connect event planners and
-        celebrants.
-      </p>
-      <p>
-        Sometimes I play the piano to help me relax and meditate. I love reading
-        about design and development to stay up to date with the latest
-        technologies.
-      </p>
-      <p>
-        I am available for contract and remote work. Email <a
-          href="mailto:me@emmanuelchucks.com">me@emmanuelchucks.com</a
-        >
-      </p>
-      <img src="" alt="Emmanuel and his wife in native Ghanaian attire" />
-    </article>
+      <p class="my-4">Full-Stack Engineer & UI/UX Designer</p>
 
-    <aside>
-      <h2>Tools I enjoy using</h2>
-      <ul>
-        <li>React</li>
-        <li>Flutter</li>
-        <li>SwiftUI</li>
-        <li>AWS</li>
-        <li>Firebase</li>
-        <li>Figma</li>
-      </ul>
-    </aside>
+      <div class="space-y-4">
+        <p>
+          A passionate developer living in the crazy city of <a
+            href="https://en.wikipedia.org/wiki/Accra">Accra, Ghana</a
+          >.
+        </p>
+        <p>
+          I enjoy building things that solve problems and spark joy. I'm
+          currently working on a social platform to help connect event planners
+          and celebrants.
+        </p>
+        <p>
+          Sometimes I play the piano to help me relax and meditate. I love
+          reading about design and development to stay up to date with the
+          latest technologies.
+        </p>
+        <p>
+          I am available for contract and remote work. Email <a
+            href="mailto:me@emmanuelchucks.com">me@emmanuelchucks.com</a
+          >
+        </p>
+      </div>
+
+      <img
+        src={emmanuelAndWife}
+        alt="Emmanuel and his wife in native Ghanaian attire"
+        class="my-4"
+      />
+
+      <aside>
+        <h2>Tools I enjoy using</h2>
+        <ul class="inline-flex flex-wrap gap-x-4 mt-4">
+          <li>React</li>
+          <li>Flutter</li>
+          <li>SwiftUI</li>
+          <li>AWS</li>
+          <li>Firebase</li>
+          <li>Figma</li>
+        </ul>
+      </aside>
+    </article>
 
     <section>
       <h2>Projects</h2>
@@ -58,7 +67,6 @@ import SiteLayout from '../layouts/SiteLayout.astro'
           >see my GitHub</a
         >
       </p>
-      <div class="bg-gray-50 aspect-video"></div>
     </section>
 
     <section>
