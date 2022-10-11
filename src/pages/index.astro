@@ -1,8 +1,9 @@
 ---
 import { Image } from '@astrojs/image/components'
+import care4dstreets from '../assets/images/care4dstreets.png'
+import celedom from '../assets/images/celedom.png'
 import emmanuelAndWife from '../assets/images/emmanuel-and-wife.jpg'
-import Project1 from '../assets/images/project-1.png'
-import Project2 from '../assets/images/project-2.png'
+import jordan from '../assets/images/jordan.png'
 import Icon from '../components/Icon.astro'
 import Link from '../components/Link.astro'
 import SiteLayout from '../layouts/SiteLayout.astro'
@@ -21,7 +22,7 @@ const projects = [
     title: 'jordangospel.org',
     description:
       'A website for a local church in Ghana. Built with Next.js and hosted on Vercel.',
-    image: Project1,
+    image: jordan,
     imagePosition: 'top',
     link: 'https://www.jordangospel.org',
   },
@@ -29,8 +30,16 @@ const projects = [
     title: 'Care for the Streets',
     description:
       'A mobile app for a non-profit that feeds and cares for destitude children in Ghana. Built with React Native and Expo.',
-    image: Project2,
+    image: care4dstreets,
     imagePosition: 'center',
+    link: '',
+  },
+  {
+    title: 'Celedom',
+    description:
+      'A mobile app for connecting event planners and celebrants. Migration of legacy codebase to React Native.',
+    image: celedom,
+    imagePosition: 'top',
     link: '',
   },
 ]
