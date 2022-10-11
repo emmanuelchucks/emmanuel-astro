@@ -1,6 +1,8 @@
 ---
 import { Image } from '@astrojs/image/components'
 import emmanuelAndWife from '../assets/images/emmanuel-and-wife.jpg'
+import Project1 from '../assets/images/project-1.png'
+import Project2 from '../assets/images/project-2.png'
 import Icon from '../components/Icon.astro'
 import Link from '../components/Link.astro'
 import SiteLayout from '../layouts/SiteLayout.astro'
@@ -13,6 +15,25 @@ const tools = [
   'Firebase',
   'Figma',
 ] as const
+
+const projects = [
+  {
+    title: 'jordangospel.org',
+    description:
+      'A website for a local church in Ghana. Built with Next.js and hosted on Vercel.',
+    image: Project1,
+    imagePosition: 'top',
+    link: 'https://www.jordangospel.org',
+  },
+  {
+    title: 'Care for the Streets',
+    description:
+      'A mobile app for a non-profit that feeds and cares for destitude children in Ghana. Built with React Native and Expo.',
+    image: Project2,
+    imagePosition: 'center',
+    link: '',
+  },
+]
 ---
 
 <SiteLayout>
@@ -88,6 +109,34 @@ const tools = [
           url="https://github.com/emmanuelchucks">see my GitHub</Link
         >.
       </p>
+      <ul class="mt-8 space-y-8">
+        {
+          projects.map((project) => (
+            <li class="overflow-y-hidden rounded-xl bg-gray-50 pt-8">
+              <div class="grid place-items-center">
+                <Image
+                  src={project.image}
+                  alt={`Screenshot of ${project.title}`}
+                  width={768}
+                  aspectRatio={325 / 412}
+                  position={project.imagePosition}
+                  format="webp"
+                  class="w-72 overflow-hidden rounded-t-[30px] border-8 border-b-0 border-black"
+                />
+              </div>
+              <div class="p-8">
+                <h3 class="text-2xl font-bold">{project.title}</h3>
+                <p class="my-2">{project.description}</p>
+                {project.link ? (
+                  <Link url={project.link}>Visit website</Link>
+                ) : (
+                  <p>🚧 In development...</p>
+                )}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
     </section>
 
     <section>
