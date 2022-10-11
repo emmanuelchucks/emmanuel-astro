@@ -1,5 +1,6 @@
 ---
 import Icon from '../components/Icon.astro'
+const currentPath = Astro.url.pathname
 const socials = [
   ['GitHub', 'https://github.com/emmanuelchucks'],
   ['Twitter', 'https://twitter.com/emmanuelchucks'],
@@ -19,13 +20,17 @@ const socials = [
     <header class="flex items-baseline gap-x-2 p-4 text-xl">
       <a
         href="/"
-        aria-current="page"
+        aria-current={currentPath === '/' && 'page'}
         class="px-4 py-2 bg-black text-white font-semibold text-3xl">e.</a
       >
       <span>/</span>
       <nav>
         <ul>
-          <li><a href="/blog">blog</a></li>
+          <li>
+            <a href="/blog" aria-current={currentPath === '/blog' && 'page'}
+              >blog</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
