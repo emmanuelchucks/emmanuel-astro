@@ -17,16 +17,22 @@ const socials = [
   </head>
   <body>
     <header class="flex items-baseline gap-x-2 p-4 text-xl">
-      <p class="px-4 py-2 bg-black text-white font-semibold text-3xl">e.</p>
+      <a
+        href="/"
+        aria-current="page"
+        class="px-4 py-2 bg-black text-white font-semibold text-3xl">e.</a
+      >
       <span>/</span>
       <nav>
         <ul>
-          <li>blog</li>
+          <li><a href="/blog">blog</a></li>
         </ul>
       </nav>
     </header>
 
-    <slot />
+    <main class="px-4 space-y-16 mb-16 mt-8">
+      <slot />
+    </main>
 
     <footer class="text-center py-8 px-4 bg-gray-50 space-y-8">
       <section>

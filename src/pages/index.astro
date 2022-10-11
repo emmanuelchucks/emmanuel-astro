@@ -54,105 +54,101 @@ const projects = [
     />
   </Fragment>
 
-  <main class="px-4 space-y-16 mb-16">
-    <article class="mt-8">
-      <h1 class="uppercase font-bold text-gray-600">
-        Hello, I'm Emmanuel Chucks
-      </h1>
-      <p class="my-4 text-4xl font-bold">
-        Full-Stack Engineer & UI/UX Designer
-      </p>
+  <article>
+    <h1 class="uppercase font-bold text-gray-600">
+      Hello, I'm Emmanuel Chucks
+    </h1>
+    <p class="my-4 text-4xl font-bold">Full-Stack Engineer & UI/UX Designer</p>
 
-      <div class="space-y-4 my-6">
-        <p>
-          A passionate developer living in the crazy city of <Link
-            url="https://en.wikipedia.org/wiki/Accra"
-          >
-            Accra, Ghana</Link
-          >.
-        </p>
-        <p>
-          I enjoy building things that solve problems and spark joy. Currently
-          working on a social platform to help connect event planners and
-          celebrants.
-        </p>
-        <p>
-          Sometimes I play the piano to help me relax and meditate. I love to
-          read and stay up to date with the latest technologies.
-        </p>
-        <p>
-          Available for contract and remote work. Just email <Link
-            url={'mailto:me@emmanuelchucks.com?subject=' +
-              encodeURIComponent("I'd like to work with you")}
-            >me@emmanuelchucks.com</Link
-          >.
-        </p>
-      </div>
-
-      <Image
-        src={emmanuelAndWife}
-        alt="Emmanuel and his wife in native Ghanaian attire"
-        width={800}
-        format="webp"
-        class="shadow-xl"
-      />
-
-      <aside>
-        <h2 class="sr-only">Tools I enjoy using</h2>
-        <ul class="flex flex-wrap gap-3 mt-12 justify-center">
-          {
-            tools.map((tool) => (
-              <li class="flex items-center gap-x-2 rounded-full bg-gray-50 px-6 py-1 font-medium text-gray-800">
-                <Icon name={tool} /> {tool}
-              </li>
-            ))
-          }
-        </ul>
-      </aside>
-    </article>
-
-    <section>
-      <h2 class="text-3xl font-bold">Projects</h2>
-      <p class="mt-1">
-        Some of my professional work. For my hobby projects, <Link
-          url="https://github.com/emmanuelchucks">see my GitHub</Link
+    <div class="space-y-4 my-6">
+      <p>
+        A passionate developer living in the crazy city of <Link
+          url="https://en.wikipedia.org/wiki/Accra"
+        >
+          Accra, Ghana</Link
         >.
       </p>
-      <ul class="mt-8 space-y-8">
+      <p>
+        I enjoy building things that solve problems and spark joy. Currently
+        working on a social platform to help connect event planners and
+        celebrants.
+      </p>
+      <p>
+        Sometimes I play the piano to help me relax and meditate. I love to read
+        and stay up to date with the latest technologies.
+      </p>
+      <p>
+        Available for contract and remote work. Just email <Link
+          url={'mailto:me@emmanuelchucks.com?subject=' +
+            encodeURIComponent("I'd like to work with you")}
+          >me@emmanuelchucks.com</Link
+        >.
+      </p>
+    </div>
+
+    <Image
+      src={emmanuelAndWife}
+      alt="Emmanuel and his wife in native Ghanaian attire"
+      width={800}
+      format="webp"
+      class="shadow-xl"
+    />
+
+    <aside>
+      <h2 class="sr-only">Tools I enjoy using</h2>
+      <ul class="flex flex-wrap gap-3 mt-12 justify-center">
         {
-          projects.map((project) => (
-            <li class="overflow-y-hidden rounded-xl bg-gray-50 pt-8">
-              <div class="grid place-items-center">
-                <Image
-                  src={project.image}
-                  alt={`Screenshot of ${project.title}`}
-                  width={768}
-                  aspectRatio={325 / 412}
-                  position={project.imagePosition}
-                  format="webp"
-                  class="w-72 overflow-hidden rounded-t-[30px] border-8 border-b-0 border-black"
-                />
-              </div>
-              <div class="p-8">
-                <h3 class="text-2xl font-bold">{project.title}</h3>
-                <p class="my-2">{project.description}</p>
-                {project.link ? (
-                  <Link url={project.link}>Visit website</Link>
-                ) : (
-                  <p>🚧 In development...</p>
-                )}
-              </div>
+          tools.map((tool) => (
+            <li class="flex items-center gap-x-2 rounded-full bg-gray-50 px-6 py-1 font-medium text-gray-800">
+              <Icon name={tool} /> {tool}
             </li>
           ))
         }
       </ul>
-    </section>
+    </aside>
+  </article>
 
-    <section>
-      <h2 class="text-3xl font-bold">Recent posts</h2>
-      <p class="mt-1">
-        Code, design, and other things I've been thinking about lately.
-      </p>
-    </section>
-  </main>
+  <section>
+    <h2 class="text-3xl font-bold">Projects</h2>
+    <p class="mt-1">
+      Some of my professional work. For my hobby projects, <Link
+        url="https://github.com/emmanuelchucks">see my GitHub</Link
+      >.
+    </p>
+    <ul class="mt-8 space-y-8">
+      {
+        projects.map((project) => (
+          <li class="overflow-y-hidden rounded-xl bg-gray-50 pt-8">
+            <div class="grid place-items-center">
+              <Image
+                src={project.image}
+                alt={`Screenshot of ${project.title}`}
+                width={768}
+                aspectRatio={325 / 412}
+                position={project.imagePosition}
+                format="webp"
+                class="w-72 overflow-hidden rounded-t-[30px] border-8 border-b-0 border-black"
+              />
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-bold">{project.title}</h3>
+              <p class="my-2">{project.description}</p>
+              {project.link ? (
+                <Link url={project.link}>Visit website</Link>
+              ) : (
+                <p>🚧 In development...</p>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="text-3xl font-bold">Recent posts</h2>
+    <p class="mt-1">
+      Code, design, and other things I've been thinking about lately.
+    </p>
+  </section>
 </SiteLayout>
