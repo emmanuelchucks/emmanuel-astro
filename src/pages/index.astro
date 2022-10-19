@@ -1,20 +1,27 @@
 ---
 import { Image } from '@astrojs/image/components'
+import {
+  SiAwsamplify,
+  SiFigma,
+  SiFirebase,
+  SiFlutter,
+  SiReact,
+  SiSwift,
+} from 'solid-icons/si'
 import care4dstreets from '../assets/images/care4dstreets.png'
 import celedom from '../assets/images/celedom.png'
 import emmanuelAndWife from '../assets/images/emmanuel-and-wife.jpg'
 import jordan from '../assets/images/jordan.png'
-import Icon from '../components/Icon.astro'
 import Link from '../components/Link.astro'
 import SiteLayout from '../layouts/SiteLayout.astro'
 
 const tools = [
-  'React',
-  'Flutter',
-  'SwiftUI',
-  'AWS',
-  'Firebase',
-  'Figma',
+  ['React', SiReact],
+  ['Flutter', SiFlutter],
+  ['SwiftUI', SiSwift],
+  ['AWS', SiAwsamplify],
+  ['Firebase', SiFirebase],
+  ['Figma', SiFigma],
 ] as const
 
 const projects = [
@@ -99,9 +106,9 @@ const projects = [
       <h2 class="sr-only">Tools I enjoy using</h2>
       <ul class="flex flex-wrap gap-3 mt-12 justify-center">
         {
-          tools.map((tool) => (
+          tools.map(([tool, Icon]) => (
             <li class="flex items-center gap-x-2 rounded-full bg-gray-50 px-6 py-1 font-medium text-gray-800">
-              <Icon name={tool} /> {tool}
+              <Icon /> {tool}
             </li>
           ))
         }

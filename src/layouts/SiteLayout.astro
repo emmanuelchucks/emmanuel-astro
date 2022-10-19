@@ -1,10 +1,11 @@
 ---
-import Icon from '../components/Icon.astro'
+import { SiGithub, SiLinkedin, SiTwitter } from 'solid-icons/si'
+
 const currentPath = Astro.url.pathname
 const socials = [
-  ['GitHub', 'https://github.com/emmanuelchucks'],
-  ['Twitter', 'https://twitter.com/emmanuelchucks'],
-  ['LinkedIn', 'https://linkedin.com/in/emmanuelchucks'],
+  ['GitHub', 'https://github.com/emmanuelchucks', SiGithub],
+  ['Twitter', 'https://twitter.com/emmanuelchucks', SiTwitter],
+  ['LinkedIn', 'https://linkedin.com/in/emmanuelchucks', SiLinkedin],
 ] as const
 ---
 
@@ -44,10 +45,10 @@ const socials = [
         <h2 class="sr-only">Connect with me</h2>
         <ul class="inline-flex flex-wrap gap-x-7 mt-1 font-medium">
           {
-            socials.map(([social, url]) => (
+            socials.map(([social, url,Icon]) => (
               <li>
                 <a href={url} class="flex items-center gap-x-2">
-                  <Icon name={social} /> {social}
+                  <Icon/> {social}
                 </a>
               </li>
             ))
