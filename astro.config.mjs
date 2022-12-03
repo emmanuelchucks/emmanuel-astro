@@ -1,6 +1,6 @@
+import image from '@astrojs/image'
 import tailwind from '@astrojs/tailwind'
 import { defineConfig } from 'astro/config'
-import image from '@astrojs/image'
 
 // https://astro.build/config
 import solidJs from '@astrojs/solid-js'
@@ -9,9 +9,9 @@ import solidJs from '@astrojs/solid-js'
 export default defineConfig({
   integrations: [
     tailwind(),
+    solidJs(),
     image({
       serviceEntryPoint: '@astrojs/image/sharp',
     }),
-    solidJs(),
   ],
 })
