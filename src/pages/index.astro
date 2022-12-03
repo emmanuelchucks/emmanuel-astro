@@ -1,12 +1,12 @@
 ---
 import { Image } from '@astrojs/image/components'
 import {
-SiAwsamplify,
-SiFigma,
-SiFirebase,
-SiFlutter,
-SiReact,
-SiSwift
+  SiAwsamplify,
+  SiFigma,
+  SiFirebase,
+  SiFlutter,
+  SiReact,
+  SiSwift,
 } from 'solid-icons/si'
 import care4dstreets from '../assets/images/care4dstreets.png'
 import celedom from '../assets/images/celedom.png'
@@ -62,12 +62,12 @@ const projects = [
   </Fragment>
 
   <article>
-    <h1 class="uppercase font-bold text-gray-600">
+    <h1 class="font-bold uppercase text-gray-600">
       Hello, I'm Emmanuel Chucks
     </h1>
     <p class="my-4 text-4xl font-bold">Full-Stack Engineer & UI/UX Designer</p>
 
-    <div class="space-y-4 my-6">
+    <div class="my-6 space-y-4">
       <p>
         A passionate developer living in the crazy city of <Link
           url="https://en.wikipedia.org/wiki/Accra"
@@ -81,8 +81,8 @@ const projects = [
         celebrants.
       </p>
       <p>
-        Sometimes I play the piano to help me relax and meditate. I also love to read
-        and stay up to date with the latest in tech.
+        Sometimes I play the piano to help me relax and meditate. I also love to
+        read and stay up to date with the latest in tech.
       </p>
       <p>
         Available for contract and remote work. Just email <Link
@@ -104,7 +104,7 @@ const projects = [
 
     <aside>
       <h2 class="sr-only">Tools I enjoy using</h2>
-      <ul class="flex flex-wrap gap-3 mt-12 justify-center">
+      <ul class="mt-12 flex flex-wrap justify-center gap-3">
         {
           tools.map(([tool, Icon]) => (
             <li class="flex items-center gap-x-2 rounded-full bg-gray-50 px-6 py-1 font-medium text-gray-800">
