@@ -1,0 +1,36 @@
+---
+import { Image } from '@astrojs/image/components'
+import type { Frontmatter } from 'lib/types'
+import BaseLayout from './BaseLayout.astro'
+
+interface Props {
+  frontmatter: Frontmatter
+}
+
+const { frontmatter } = Astro.props
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <article>
+    <h1 class="text-2xl font-bold">{frontmatter.title}</h1>
+    <ul class="flex gap-x-2">
+      {
+        frontmatter.tags.map((tag: string) => (
+          <li>
+            <a href={`/blog/tags/${tag}`}>{tag}</a>
+          </li>
+        ))
+      }
+    </ul>
+    <Image
+      alt={frontmatter.image.alt}
+      src={frontmatter.image.url}
+      width={568}
+      aspectRatio={16 / 9}
+      class="my-8"
+    />
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

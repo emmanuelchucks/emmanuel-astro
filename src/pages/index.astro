@@ -1,5 +1,13 @@
 ---
 import { Image } from '@astrojs/image/components'
+import care4dstreets from 'assets/images/care4dstreets.png'
+import celedom from 'assets/images/celedom.png'
+import emmanuelAndWife from 'assets/images/emmanuel-and-wife.jpg'
+import jordan from 'assets/images/jordan.png'
+import Link from 'components/Link.astro'
+import BaseLayout from 'layouts/BaseLayout.astro'
+import type { Frontmatter } from 'lib/types'
+import { sortDates } from 'lib/utils'
 import {
   SiAwsamplify,
   SiFigma,
@@ -8,12 +16,6 @@ import {
   SiReact,
   SiSwift,
 } from 'solid-icons/si'
-import care4dstreets from '../assets/images/care4dstreets.png'
-import celedom from '../assets/images/celedom.png'
-import emmanuelAndWife from '../assets/images/emmanuel-and-wife.jpg'
-import jordan from '../assets/images/jordan.png'
-import Link from '../components/Link.astro'
-import SiteLayout from '../layouts/SiteLayout.astro'
 
 const tools = [
   ['React', SiReact],
@@ -50,108 +52,130 @@ const projects = [
     link: '',
   },
 ]
+
+const allPosts = await Astro.glob<Frontmatter>('./blog/*.md')
+const recentPosts = allPosts
+  .sort((a, b) => sortDates(a.frontmatter.pubDate, b.frontmatter.pubDate))
+  .slice(0, 3)
 ---
 
 <BaseLayout
   title="Emmanuel Chucks - Full-Stack Engineer and UI/UX Designer"
   description="Personal portfolio website for Emmanuel Chucks, an ambitious software engineer with a passion for UI/UX design."
 >
-  <article>
-    <h1 class="font-bold uppercase text-gray-600">
-      Hello, I'm Emmanuel Chucks
-    </h1>
-    <p class="my-4 text-4xl font-bold">Full-Stack Engineer & UI/UX Designer</p>
+  <div class="space-y-16">
+    <article>
+      <h1 class="font-bold uppercase text-gray-600">
+        Hello, I'm Emmanuel Chucks
+      </h1>
+      <p class="my-4 text-4xl font-bold">
+        Full-Stack Engineer & UI/UX Designer
+      </p>
 
-    <div class="my-6 space-y-4">
-      <p>
-        A passionate developer living in the crazy city of <Link
-          url="https://en.wikipedia.org/wiki/Accra"
-        >
-          Accra, Ghana</Link
+      <div class="my-6 space-y-4">
+        <p>
+          A passionate developer living in the crazy city of <Link
+            url="https://en.wikipedia.org/wiki/Accra"
+          >
+            Accra, Ghana</Link
+          >.
+        </p>
+        <p>
+          I enjoy building things that solve problems and spark joy. Currently
+          working on a social platform to help connect event planners and
+          celebrants.
+        </p>
+        <p>
+          Sometimes I play the piano to help me relax and meditate. I also love
+          to read and stay up to date with the latest in tech.
+        </p>
+        <p>
+          Available for contract and remote work. Just email <Link
+            url={'mailto:me@emmanuelchucks.com?subject=' +
+              encodeURIComponent("I'd like to work with you")}
+            >me@emmanuelchucks.com</Link
+          >.
+        </p>
+      </div>
+
+      <Image
+        src={emmanuelAndWife}
+        alt="Emmanuel and his wife in native Ghanaian attire"
+        width={568}
+        loading="eager"
+        format="webp"
+        class="shadow-xl"
+      />
+
+      <aside>
+        <h2 class="sr-only">Tools I enjoy using</h2>
+        <ul class="mt-12 flex flex-wrap justify-center gap-3">
+          {
+            tools.map(([tool, Icon]) => (
+              <li class="flex items-center gap-x-2 rounded-full bg-gray-50 px-6 py-1 font-medium text-gray-800">
+                <Icon /> {tool}
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
+    </article>
+
+    <section>
+      <h2 class="text-3xl font-bold">Projects</h2>
+      <p class="mt-1">
+        Some of my professional work. For my hobby projects, <Link
+          url="https://github.com/emmanuelchucks">see my GitHub</Link
         >.
       </p>
-      <p>
-        I enjoy building things that solve problems and spark joy. Currently
-        working on a social platform to help connect event planners and
-        celebrants.
-      </p>
-      <p>
-        Sometimes I play the piano to help me relax and meditate. I also love to
-        read and stay up to date with the latest in tech.
-      </p>
-      <p>
-        Available for contract and remote work. Just email <Link
-          url={'mailto:me@emmanuelchucks.com?subject=' +
-            encodeURIComponent("I'd like to work with you")}
-          >me@emmanuelchucks.com</Link
-        >.
-      </p>
-    </div>
-
-    <Image
-      src={emmanuelAndWife}
-      alt="Emmanuel and his wife in native Ghanaian attire"
-      width={568}
-      loading="eager"
-      format="webp"
-      class="shadow-xl"
-    />
-
-    <aside>
-      <h2 class="sr-only">Tools I enjoy using</h2>
-      <ul class="mt-12 flex flex-wrap justify-center gap-3">
+      <ul class="mt-8 space-y-8">
         {
-          tools.map(([tool, Icon]) => (
-            <li class="flex items-center gap-x-2 rounded-full bg-gray-50 px-6 py-1 font-medium text-gray-800">
-              <Icon /> {tool}
+          projects.map((project) => (
+            <li class="overflow-y-hidden rounded-xl bg-gray-50 pt-8">
+              <div class="grid place-items-center">
+                <Image
+                  src={project.image}
+                  alt={`Screenshot of ${project.title}`}
+                  width={568}
+                  aspectRatio={325 / 412}
+                  position={project.imagePosition}
+                  format="webp"
+                  class="w-72 overflow-hidden rounded-t-[30px] border-8 border-b-0 border-black"
+                />
+              </div>
+              <div class="p-8">
+                <h3 class="text-2xl font-bold">{project.title}</h3>
+                <p class="my-2">{project.description}</p>
+                {project.link ? (
+                  <Link url={project.link}>Visit website</Link>
+                ) : (
+                  <p>🚧 In development...</p>
+                )}
+              </div>
             </li>
           ))
         }
       </ul>
-    </aside>
-  </article>
+    </section>
 
-  <section>
-    <h2 class="text-3xl font-bold">Projects</h2>
-    <p class="mt-1">
-      Some of my professional work. For my hobby projects, <Link
-        url="https://github.com/emmanuelchucks">see my GitHub</Link
-      >.
-    </p>
-    <ul class="mt-8 space-y-8">
-      {
-        projects.map((project) => (
-          <li class="overflow-y-hidden rounded-xl bg-gray-50 pt-8">
-            <div class="grid place-items-center">
-              <Image
-                src={project.image}
-                alt={`Screenshot of ${project.title}`}
-                width={568}
-                aspectRatio={325 / 412}
-                position={project.imagePosition}
-                format="webp"
-                class="w-72 overflow-hidden rounded-t-[30px] border-8 border-b-0 border-black"
-              />
-            </div>
-            <div class="p-8">
-              <h3 class="text-2xl font-bold">{project.title}</h3>
-              <p class="my-2">{project.description}</p>
-              {project.link ? (
-                <Link url={project.link}>Visit website</Link>
-              ) : (
-                <p>🚧 In development...</p>
-              )}
-            </div>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-
-  <section>
-    <h2 class="text-3xl font-bold">Recent posts</h2>
-    <p class="mt-1">
-      Code, design, and other things I've been thinking about lately.
-    </p>
-  </section>
+    <section>
+      <h2 class="text-3xl font-bold">Recent posts</h2>
+      <p class="mt-1">
+        Code, design, and other things I've been thinking about lately.
+      </p>
+      <ul>
+        {
+          recentPosts.map((post) => (
+            <li class="mt-8">
+              <h3 class="text-2xl font-bold">
+                <a href={post.url}>{post.frontmatter.title}</a>
+              </h3>
+              <p class="mt-1 text-gray-600">{post.frontmatter.pubDate}</p>
+              <p class="mt-1">{post.frontmatter.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
 </BaseLayout>
