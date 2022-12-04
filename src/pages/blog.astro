@@ -1,15 +1,12 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro'
+import BaseLayout from 'layouts/BaseLayout.astro'
+
+export const title = 'Blog - Emmanuel Chucks'
+export const description =
+  "Blog page for my personal portfolio website. Posts about web and mobile development, design, and other things I've been thinking about lately."
+
 ---
 
-<SiteLayout>
-  <Fragment slot="site:head">
-    <title>Blog - Emmanuel Chucks</title>
-    <meta
-      name="description"
-      content="Blog page for my personal portfolio website. Posts about web and mobile development, design, and other things I've been thinking about lately."
-    />
-  </Fragment>
-
+<BaseLayout title={title} description={description}>
   <h1 class="text-2xl font-bold">All posts</h1>
-</SiteLayout>
+</BaseLayout>

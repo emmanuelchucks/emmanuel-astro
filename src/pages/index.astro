@@ -52,15 +52,10 @@ const projects = [
 ]
 ---
 
-<SiteLayout>
-  <Fragment slot="site:head">
-    <title>Emmanuel Chucks - Full-Stack Engineer and UI/UX Designer</title>
-    <meta
-      name="description"
-      content="Personal portfolio website for Emmanuel Chucks, an ambitious software engineer with a passion for UI/UX design."
-    />
-  </Fragment>
-
+<BaseLayout
+  title="Emmanuel Chucks - Full-Stack Engineer and UI/UX Designer"
+  description="Personal portfolio website for Emmanuel Chucks, an ambitious software engineer with a passion for UI/UX design."
+>
   <article>
     <h1 class="font-bold uppercase text-gray-600">
       Hello, I'm Emmanuel Chucks
@@ -159,4 +154,4 @@ const projects = [
       Code, design, and other things I've been thinking about lately.
     </p>
   </section>
-</SiteLayout>
+</BaseLayout>

@@ -1,6 +1,13 @@
 ---
 import { SiGithub, SiLinkedin, SiTwitter } from 'solid-icons/si'
 
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+
 const currentPath = Astro.url.pathname
 const socials = [
   ['GitHub', 'https://github.com/emmanuelchucks', SiGithub],
@@ -15,18 +22,25 @@ const socials = [
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
     <slot name="site:head" />
   </head>
   <body class="flex min-h-[100dvh] flex-col">
-    <header class="flex items-baseline gap-x-2 p-4 text-xl">
-      <a
-        href="/"
-        aria-current={currentPath === '/' && 'page'}
-        class="bg-black px-4 py-2 text-3xl font-semibold text-white">e.</a
-      >
-      <span>/</span>
+    <header>
       <nav>
-        <ul>
+        <ul class="flex items-baseline gap-x-2 p-4 text-xl">
+          <li>
+            <a
+              href="/"
+              aria-current={currentPath === '/' && 'page'}
+              class="block bg-black px-4 py-2 text-3xl font-semibold text-white"
+            >
+              <span aria-hidden="true">e.</span>
+              <span class="sr-only">home</span>
+            </a>
+          </li>
+          <li aria-hidden="true"><span>/</span></li>
           <li>
             <a href="/blog/" aria-current={currentPath === '/blog/' && 'page'}
               >blog</a
@@ -36,7 +50,7 @@ const socials = [
       </nav>
     </header>
 
-    <main class="mb-16 mt-8 flex-1 space-y-16 px-4">
+    <main class="mb-16 mt-8 flex-1 space-y-8 px-4">
       <slot />
     </main>
 
