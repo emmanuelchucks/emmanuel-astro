@@ -6,6 +6,6 @@ export const get = () =>
     title: title,
     description: description,
     site: import.meta.env.SITE,
-    items: import.meta.glob('./blog/*.md'),
+    items: import.meta.glob('./blog/*.mdx'),
     customData: `<language>en-us</language>`,
   })

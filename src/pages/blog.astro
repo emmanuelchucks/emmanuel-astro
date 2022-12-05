@@ -6,7 +6,7 @@ export const title = 'Blog - Emmanuel Chucks'
 export const description =
   "Blog page for my personal portfolio website. Posts about web and mobile development, design, and other things I've been thinking about lately."
 
-const allPosts = await Astro.glob<Frontmatter>('./blog/*.md')
+const allPosts = await Astro.glob<Frontmatter>('./blog/*.mdx')
 ---
 
 <BaseLayout title={title} description={description}>
