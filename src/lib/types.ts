@@ -3,6 +3,7 @@ export interface Frontmatter {
   description: string
   author: string
   pubDate: string
+  minutesRead: string
   tags: string[]
   image: {
     url: string
