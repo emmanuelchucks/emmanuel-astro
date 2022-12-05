@@ -5,9 +5,10 @@ import celedom from 'assets/images/celedom.png'
 import emmanuelAndWife from 'assets/images/emmanuel-and-wife.jpg'
 import jordan from 'assets/images/jordan.png'
 import Link from 'components/Link.astro'
+import PostCard from 'components/PostCard.astro'
 import BaseLayout from 'layouts/BaseLayout.astro'
 import type { Frontmatter } from 'lib/types'
-import { sortDates, timeAgo } from 'lib/utils'
+import { sortDates } from 'lib/utils'
 import {
   SiAwsamplify,
   SiFigma,
@@ -164,28 +165,7 @@ const recentPosts = allPosts
         Code, design, and other things I've been thinking about lately.
       </p>
       <ul class="mt-8 space-y-4">
-        {
-          recentPosts.map((post) => (
-            <li class="overflow-y-hidden rounded-xl bg-gray-50">
-              <Image
-                alt={post.frontmatter.image.alt}
-                src={post.frontmatter.image.url}
-                width={568}
-                aspectRatio={16 / 9}
-                format="webp"
-              />
-              <div class="p-4">
-                <h3 class="text-xl font-bold">
-                  <Link url={post.url}>{post.frontmatter.title}</Link>
-                </h3>
-                <div class="mt-1 flex flex-row items-baseline justify-between text-gray-800">
-                  <p>{timeAgo(post.frontmatter.pubDate)}</p>
-                  <p>{post.frontmatter.minutesRead}</p>
-                </div>
-              </div>
-            </li>
-          ))
-        }
+        {recentPosts.map((post) => <PostCard post={post} />)}
       </ul>
     </section>
   </div>

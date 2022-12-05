@@ -1,0 +1,34 @@
+---
+import { Image } from '@astrojs/image/components'
+import type { MarkdownInstance } from 'astro'
+import type { Frontmatter } from 'lib/types'
+import { timeAgo } from 'lib/utils'
+import Link from './Link.astro'
+
+interface Props {
+  post: MarkdownInstance<Frontmatter>
+}
+
+const { post } = Astro.props
+---
+
+<li class="overflow-y-hidden rounded-xl bg-gray-50">
+  <Image
+    alt={post.frontmatter.image.alt}
+    src={post.frontmatter.image.src}
+    width={568}
+    aspectRatio={16 / 9}
+    format="webp"
+  />
+  <div class="p-4">
+    <h3 class="text-xl font-bold">
+      <Link url={post.url}>{post.frontmatter.title}</Link>
+    </h3>
+    <div
+      class="mt-1 flex flex-row items-baseline justify-between text-gray-800"
+    >
+      <p>{timeAgo(post.frontmatter.pubDate)}</p>
+      <p>{post.frontmatter.minutesRead}</p>
+    </div>
+  </div>
+</li>
