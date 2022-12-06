@@ -4,7 +4,7 @@ description: 'Solid is a blazingly fast JavaScript library that aims to be a mor
 author: 'Emmanuel Chucks'
 pubDate: 2022-12-03
 image:
-  src: 'src/assets/images/solid-vs-react-u324.png'
+  src: './src/assets/images/solid-vs-react-u324.png'
   alt: 'Solid logo with the flex emoji'
 tags: ['solid', 'react']
 ---
@@ -14,7 +14,7 @@ import { ReactToggle } from './ReactToggle.tsx'
 
 First off, the thing we all love about React:
 
-```ts
+```jsx
 export function Toggle() {
   const [on, setOn] = useState(false)
   return <button onClick={() => setOn(!on)}>{on ? 'on' : 'off'}</button>
