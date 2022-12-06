@@ -10,7 +10,11 @@ tags: ['solid', 'react']
 ---
 
 import Demo from 'components/Demo.astro'
-import { ReactToggle } from './ReactToggle.tsx'
+import {
+  ReactToggle,
+  ReactToggleReRender,
+  SolidToggleReRender,
+} from './demos.tsx'
 
 First off, the thing we all love about React:
 
@@ -24,3 +28,51 @@ export function Toggle() {
 <Demo>
   <ReactToggle client:visible />
 </Demo>
+
+UI as a function of state. It's simple, it's declarative, and it's easy to reason about. Our UI changes when our state changes. It's a beautiful thing.
+
+But as you already know, React will re-render your entire component tree every time your state changes. So if for whatever reason there is a component with heavy computation or its own deeply nested component tree sitting beside our little button, it will also re-render every time we click the button. This is a problem.
+
+```jsx
+export function Toggle() {
+  const [on, setOn] = useState(false)
+  return (
+    <>
+      <button onClick={() => setOn(!on)}>{on ? 'on' : 'off'}</button>
+      <HeavyComputation />
+      <DeeplyNestedTree />
+    </>
+  )
+}
+```
+
+<Demo>
+  <ReactToggleReRender client:visible />
+</Demo>
+
+React has an 'opt-out re-rendering' model. If you do not want your components to re-render, you have to wrap them in `memo`, [lift content up](https://overreacted.io/before-you-memo/#solution-2-lift-content-up), or find some other creative way to prevent them from re-rendering.
+
+## Enter Solid
+
+Now consider this piece of code:
+
+```jsx
+export function Toggle() {
+  const [on, setOn] = createSignal(false)
+  return (
+    <>
+      <button onClick={() => setOn(!on())}>{on() ? 'on' : 'off'}</button>
+      <HeavyComputation />
+      <DeeplyNestedTree />
+    </>
+  )
+}
+```
+
+<Demo>
+  <SolidToggleReRender client:visible />
+</Demo>
+
+You might struggle to notice any difference in the code. It is almost identical to the React version. You might even be tempted to dismiss the Solid version as as petty semantics. But they are different exactly where it matters. Solid is not re-rendering the entire component tree every time the state changes. It is only re-rendering the components that depend on the state that changed.
+
+The `createSignal` function is Solid's reactive primitive. It's a function that returns a signal accessor and setter. The `on` variable is a signal, and it's being used to store the state of our toggle. The `setOn` function is also a signal, and it's being used to update the state of our toggle. The `on()` function is a signal accessor, and it's being used to read the value of our signal.
