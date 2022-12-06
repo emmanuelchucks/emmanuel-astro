@@ -1,5 +1,6 @@
 ---
 import type { MarkdownInstance } from 'astro'
+import PostCard from 'components/PostCard.astro'
 import BaseLayout from 'layouts/BaseLayout.astro'
 import type { Frontmatter } from 'lib/types'
 
@@ -32,14 +33,10 @@ const { posts } = Astro.props
   title={`${tag} - Emmanuel Chucks`}
   description={`All the posts from my blog that are tagged with '${tag}'`}
 >
-  <h1 class="text-2xl font-bold">Posts tagged with '{tag}'</h1>
-  <ul>
-    {
-      posts.map((post) => (
-        <li>
-          <a href={post.url}>{post.frontmatter.title}</a>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="space-y-8 px-4">
+    <h1 class="text-3xl font-bold">Posts tagged with '{tag}'</h1>
+    <ul>
+      {posts.map((post) => <PostCard post={post} />)}
+    </ul>
+  </div>
 </BaseLayout>

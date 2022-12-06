@@ -11,8 +11,10 @@ const allPosts = await Astro.glob<Frontmatter>('./blog/*.mdx')
 ---
 
 <BaseLayout title={title} description={description}>
-  <h1 class="text-2xl font-bold">All posts</h1>
-  <ul class="space-y-4">
-    {allPosts.map((post) => <PostCard post={post} />)}
-  </ul>
+  <div class="space-y-8 px-4">
+    <h1 class="text-3xl font-bold">All posts</h1>
+    <ul class="space-y-4">
+      {allPosts.map((post) => <PostCard post={post} />)}
+    </ul>
+  </div>
 </BaseLayout>

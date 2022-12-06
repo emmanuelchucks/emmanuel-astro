@@ -1,5 +1,6 @@
 ---
 import { Image } from '@astrojs/image/components'
+import Link from 'components/Link.astro'
 import type { Frontmatter } from 'lib/types'
 import BaseLayout from './BaseLayout.astro'
 
@@ -12,25 +13,34 @@ const { frontmatter } = Astro.props
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
   <article>
-    <h1 class="text-2xl font-bold">{frontmatter.title}</h1>
-    <ul class="flex gap-x-2">
-      {
-        frontmatter.tags.map((tag: string) => (
-          <li>
-            <a href={`/blog/tags/${tag}`}>{tag}</a>
-          </li>
-        ))
-      }
-    </ul>
     <Image
       alt={frontmatter.image.alt}
       src={frontmatter.image.src}
-      width={568}
+      width={720}
       aspectRatio={16 / 9}
-      class="my-8"
+      format="webp"
+      class="mb-8"
     />
-    <div class="prose">
-      <slot />
+
+    <div class="px-4">
+      <h1 class="text-3xl font-bold">{frontmatter.title}</h1>
+
+      <section class="mt-1 flex items-center gap-x-2">
+        <h2>tags:</h2>
+        <ul class="flex gap-x-2">
+          {
+            frontmatter.tags.map((tag: string) => (
+              <li>
+                <Link url={`/blog/tags/${tag}`}>{tag}</Link>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <div class="prose my-8">
+        <slot />
+      </div>
     </div>
   </article>
 </BaseLayout>
