@@ -1,4 +1,5 @@
 export interface Frontmatter {
+  slug: string
   title: string
   author: string
   pubDate: string

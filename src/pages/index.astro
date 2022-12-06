@@ -54,7 +54,7 @@ const projects = [
   },
 ]
 
-const allPosts = await Astro.glob<Frontmatter>('./blog/*.mdx')
+const allPosts = await Astro.glob<Frontmatter>('/src/posts/*.mdx')
 const recentPosts = allPosts
   .sort((a, b) => sortDates(a.frontmatter.pubDate, b.frontmatter.pubDate))
   .slice(0, 3)

@@ -1,14 +1,28 @@
 ---
 import { Image } from '@astrojs/image/components'
+import type { MarkdownInstance } from 'astro'
 import Link from 'components/Link.astro'
+import BaseLayout from 'layouts/BaseLayout.astro'
 import type { Frontmatter } from 'lib/types'
-import BaseLayout from './BaseLayout.astro'
 
-interface Props {
-  frontmatter: Frontmatter
+export async function getStaticPaths() {
+  const posts = await Astro.glob<Frontmatter>('/src/posts/*.mdx')
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.frontmatter.slug,
+    },
+    props: {
+      post,
+    },
+  }))
 }
 
-const { frontmatter } = Astro.props
+interface Props {
+  post: MarkdownInstance<Frontmatter>
+}
+
+const { Content, frontmatter } = Astro.props.post
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
@@ -31,7 +45,7 @@ const { frontmatter } = Astro.props
           {
             frontmatter.tags.map((tag: string) => (
               <li>
-                <Link url={`/blog/tags/${tag}`}>{tag}</Link>
+                <Link href={`/blog/tags/${tag}`}>{tag}</Link>
               </li>
             ))
           }
@@ -39,7 +53,7 @@ const { frontmatter } = Astro.props
       </section>
 
       <div class="prose my-8">
-        <slot />
+        <Content components={{ a: Link }} />
       </div>
     </div>
   </article>
