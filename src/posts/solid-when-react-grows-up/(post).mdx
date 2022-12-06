@@ -9,8 +9,18 @@ image:
 tags: ['solid', 'react']
 ---
 
-[React](https://reactjs.org/) is a JavaScript library that has become the de facto standard for building user interfaces. It has a huge community and is used by many large companies, including Facebook, Netflix, and Uber. It is also the most popular JavaScript library.
+import Demo from 'components/Demo.astro'
+import { ReactToggle } from './ReactToggle.tsx'
+
+First off, the thing we all love about React:
 
 ```ts
-const time = new Date()
+export function Toggle() {
+  const [on, setOn] = useState(false)
+  return <button onClick={() => setOn(!on)}>{on ? 'on' : 'off'}</button>
+}
 ```
+
+<Demo>
+  <ReactToggle client:visible />
+</Demo>
