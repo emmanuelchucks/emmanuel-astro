@@ -76,7 +76,7 @@ const recentPosts = allPosts
       <div class="my-6 space-y-4">
         <p>
           A passionate developer living in the crazy city of <Link
-            url="https://en.wikipedia.org/wiki/Accra"
+            href="https://en.wikipedia.org/wiki/Accra"
           >
             Accra, Ghana</Link
           >.
@@ -92,7 +92,7 @@ const recentPosts = allPosts
         </p>
         <p>
           Available for contract and remote work. Just email <Link
-            url={'mailto:me@emmanuelchucks.com?subject=' +
+            href={'mailto:me@emmanuelchucks.com?subject=' +
               encodeURIComponent("I'd like to work with you")}
             >me@emmanuelchucks.com</Link
           >.
@@ -126,7 +126,7 @@ const recentPosts = allPosts
       <h2 class="text-3xl font-bold">Projects</h2>
       <p class="mt-1">
         Some of my professional work. For my hobby projects, <Link
-          url="https://github.com/emmanuelchucks">see my GitHub</Link
+          href="https://github.com/emmanuelchucks">see my GitHub</Link
         >.
       </p>
       <ul class="mt-8 space-y-4">
@@ -148,7 +148,7 @@ const recentPosts = allPosts
                 <h3 class="text-2xl font-bold">{project.title}</h3>
                 <p class="my-2">{project.description}</p>
                 {project.link ? (
-                  <Link url={project.link}>Visit website</Link>
+                  <Link href={project.link}>Visit website</Link>
                 ) : (
                   <p>🚧 In development...</p>
                 )}

@@ -22,7 +22,9 @@ const { post } = Astro.props
   />
   <div class="p-4">
     <h3 class="text-xl font-bold">
-      <Link url={post.url}>{post.frontmatter.title}</Link>
+      <Link href={'/blog/' + post.frontmatter.slug}
+        >{post.frontmatter.title}</Link
+      >
     </h3>
     <div
       class="mt-1 flex flex-row items-baseline justify-between text-gray-800"
